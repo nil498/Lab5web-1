@@ -1,0 +1,43 @@
+// const namaPengguna = prompt("Masukkan nama Anda:", "");
+// if (namaPengguna && namaPengguna.trim() !== "") {
+// alert("Halo, " + namaPengguna + "!");
+// document.getElementById("pesan").textContent = "Selamat datang, " + namaPengguna + ".";
+// } else {
+// alert("Nama belum diisi.");
+// }
+
+
+
+// function operasiDasar(a, b) {
+//     console.log("Penjumlahan : ", a + b );
+//     console.log("Pengurangan : ", a - b );
+//     console.log("perkalian:", a * b);
+//     console.log("pembagian:", b !== 0 ? a/b : "tidak dapat di bagi nol");
+//     console.log("modulus:", a%b);
+// }
+// operasiDasar(9, 4);
+
+//4 
+// const inputNilai = prompt("masukkan nilai (0-100):");
+// const nilaiMahasiswa = Number(inputNilai);
+// if (inputNilai === null || inputNilai.trim() === "" ||
+// Number.isNaN(nilaiMahasiswa) || nilaiMahasiswa < 0 || nilaiMahasiswa > 100) {
+// alert("Input nilai tidak valid.");
+// } else if (nilaiMahasiswa >= 60) {
+// alert("Lulus");
+// } else {
+// alert("Belum lulus");
+// }
+
+// 5 
+// const inputPilihan = prompt("masukkan angka 1-5:");
+// switch (inputPilihan){ 
+//     case "1": alert("Bilangan satu"); break;
+//     case "2": alert("Bilangan dua"); break;
+//     case "3": alert("Bilangan tiga"); break;
+//     case "4": alert("Bilangan empat"); break;
+//     case "5": alert("Bilangan lima"); break;
+//     default: alert("Pilihan tidak tersedia");
+// }
+
+

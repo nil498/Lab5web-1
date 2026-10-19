@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kalkulator Nilai</title>
+</head>
+<body>
+
+    <h2>Kalkulator Nilai Mahasiswa</h2>
+
+    <form id="formNilai">
+        <label>Nilai Tugas:</label>
+        <input type="number" id="tugas" min="0" max="100" required>
+        <br><br>
+
+        <label>Nilai UTS:</label>
+        <input type="number" id="uts" min="0" max="100" required>
+        <br><br>
+
+        <label>Nilai UAS:</label>
+        <input type="number" id="uas" min="0" max="100" required>
+        <br><br>
+
+        <button type="submit">Hitung</button>
+    </form>
+
+    <p id="pesan"></p>
+
+    <h3>Hasil</h3>
+    <p>Nilai Akhir: <span id="akhir">-</span></p>
+    <p>Predikat: <span id="predikat">-</span></p>
+    <p>Status: <span id="status">-</span></p>
+
+    <script>
+        // Function dari modul
+        function hitungNilaiakhir(tugas, uts, uas) {
+            return tugas * 0.30 + uts * 0.30 + uas * 0.40;
+        }
+
+        function tentukanPredikat(nilai) {
+            if (nilai >= 85) return "A";
+            if (nilai >= 75) return "B";
+            if (nilai >= 60) return "C";
+            if (nilai >= 50) return "D";
+            return "E";
+        }
+
+        // Function tambahan untuk status
+        function tentukanStatus(nilai) {
+            if (nilai >= 60) {
+                return "Lulus";
+            } else {
+                return "Tidak Lulus";
+            }
+        }
+
+        // Function untuk menampilkan hasil ke HTML
+        function tampilkanHasil(akhir, predikat, status) {
+            document.getElementById("akhir").textContent =
+                akhir.toFixed(2);
+
+            document.getElementById("predikat").textContent =
+                predikat;
+
+            document.getElementById("status").textContent =
+                status;
+        }
+
+        // Proses ketika form dikirim
+        document.getElementById("formNilai").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            const tugas = document.getElementById("tugas").value;
+            const uts = document.getElementById("uts").value;
+            const uas = document.getElementById("uas").value;
+
+            // Validasi input
+            if (tugas === "" || uts === "" || uas === "") {
+                document.getElementById("pesan").textContent =
+                    "Semua nilai harus diisi.";
+                return;
+            }
+
+            const nilaiTugas = Number(tugas);
+            const nilaiUTS = Number(uts);
+            const nilaiUAS = Number(uas);
+
+            if (
+                nilaiTugas < 0 || nilaiTugas > 100 ||
+                nilaiUTS < 0 || nilaiUTS > 100 ||
+                nilaiUAS < 0 || nilaiUAS > 100
+            ) {
+                document.getElementById("pesan").textContent =
+                    "Nilai harus berada pada rentang 0–100.";
+                return;
+            }
+
+            document.getElementById("pesan").textContent = "";
+
+            // Memanggil function modul
+            const akhir = hitungNilaiakhir(
+                nilaiTugas, nilaiUTS, nilaiUAS
+            );
+
+            const predikat = tentukanPredikat(akhir);
+            const status = tentukanStatus(akhir);
+
+            // Menampilkan hasil
+            tampilkanHasil(akhir, predikat, status);
+        });
+    </script>
+
+</body>
+</html>
